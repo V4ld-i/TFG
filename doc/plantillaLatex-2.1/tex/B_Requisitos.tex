@@ -1,0 +1,88 @@
+\apendice{Especificación de Requisitos}
+
+\section{Introducción}
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-01}    & \textbf{Iniciar sesión}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Sergio \\
+		\textbf{Requisitos asociados} & RF-01, RF-02 \\
+		\textbf{Descripción}          & El usuario se identifica con sus credenciales para acceder a las funciones que le corresponden según su rol (administrador, encargado o trabajador). \\
+		\textbf{Precondición}         & El usuario tiene una cuenta activa y no tiene una sesión iniciada. \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario accede a la página de inicio de sesión.
+			\item El sistema muestra el formulario de acceso.
+			\item El usuario introduce su correo y su contraseña y pulsa ``Entrar''.
+			\item El sistema valida los datos y comprueba las credenciales y que la cuenta esté activa.
+			\item El sistema crea la sesión e identifica el rol del usuario.
+			\item El sistema redirige al usuario a su pantalla de inicio según su rol.
+		\end{enumerate}\\
+		\textbf{Postcondición}        & El usuario queda autenticado y solo accede a las funciones de su rol. \\
+		\textbf{Excepciones}          &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Campos vacíos o con formato inválido: el sistema lo indica y el usuario vuelve a introducirlos.
+			\item Credenciales incorrectas: el sistema muestra un mensaje genérico y permite reintentarlo.
+			\item Cuenta desactivada: el sistema informa de que no puede acceder y sugiere contactar con el administrador.
+			\item Demasiados intentos fallidos: el sistema bloquea el acceso temporalmente.
+			\item Contraseña olvidada: se pasa al caso de uso CU-03 Recuperar contraseña.
+		\end{enumerate}\\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-01 Iniciar sesión.}
+\end{table}
+
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-02}    & \textbf{Cerrar sesión}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Sergio \\
+		\textbf{Requisitos asociados} & RF-01 \\
+		\textbf{Descripción}          & El usuario finaliza su sesión en la aplicación para impedir que otras personas accedan a sus datos y funciones desde ese dispositivo. \\
+		\textbf{Precondición}         & El usuario tiene una sesión iniciada. \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario selecciona la opción ``Cerrar sesión''.
+			\item El sistema invalida la sesión activa del usuario.
+			\item El sistema redirige al usuario a la página de inicio de sesión.
+		\end{enumerate}\\
+		\textbf{Postcondición}        & La sesión queda cerrada y el usuario no puede acceder a las funciones protegidas sin volver a autenticarse. \\
+		\textbf{Excepciones}          &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Error de comunicación con el servidor: el sistema elimina igualmente los datos de sesión locales y redirige al inicio de sesión.
+		\end{enumerate}\\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-02 Cerrar sesión.}
+\end{table}
+
+\section{Objetivos generales}
+
+\section{Catalogo de requisitos}
+
+	\begin{itemize}
+		\item \textbf{RF-01. Autenticación de usuarios.} El sistema permitirá a los usuarios registrados identificarse mediante correo electrónico y contraseña para acceder a la aplicación, rechazando el acceso si las credenciales son incorrectas o la cuenta está desactivada.
+		\item \textbf{RF-02. Gestión de roles y permisos.} El sistema asignará a cada usuario un rol (administrador, encargado o trabajador) y limitará las funciones a las que puede acceder según el rol asignado.
+	\end{itemize}
+
+\section{Especificación de requisitos}
+
+
