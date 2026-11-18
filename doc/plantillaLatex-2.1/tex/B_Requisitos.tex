@@ -183,6 +183,112 @@
 	\caption{CU-05 Dar de alta un trabajador.}
 \end{table}
 
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-06}    & \textbf{Modificar los datos de un trabajador}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Sergio \\
+		\textbf{Requisitos asociados} & RF-05 \\
+		\textbf{Descripción}          & El administrador o el encargado actualiza los datos personales o profesionales de un trabajador ya registrado. \\
+		\textbf{Precondición}         & El usuario tiene una sesión iniciada con rol de administrador o encargado y el trabajador existe en el sistema. \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario accede a la ficha del trabajador y selecciona ``Editar''.
+			\item El sistema muestra el formulario con los datos actuales.
+			\item El usuario modifica los datos necesarios y confirma.
+			\item El sistema valida los datos y guarda los cambios.
+			\item El sistema muestra la ficha actualizada.
+		\end{enumerate}\\
+		\textbf{Postcondición}        & Los datos del trabajador quedan actualizados y se reflejan en todo el sistema (asignaciones, informes, etc.). \\
+		\textbf{Excepciones}          &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Datos obligatorios vacíos o inválidos: el sistema lo señala y pide corregirlos.
+			\item Los nuevos datos coinciden con los de otro trabajador (por ejemplo, mismo documento de identidad): el sistema lo indica y no guarda los cambios.
+			\item El usuario cancela la edición: el sistema descarta los cambios y vuelve a la ficha.
+		\end{enumerate}\\
+		\textbf{Importancia}          & Media \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-06 Modificar los datos de un trabajador.}
+\end{table}
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-07}    & \textbf{Dar de baja un trabajador}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Sergio \\
+		\textbf{Requisitos asociados} & RF-05 \\
+		\textbf{Descripción}          & El administrador o el encargado da de baja a un trabajador que deja de formar parte de la plantilla, conservando su historial. \\
+		\textbf{Precondición}         & El usuario tiene una sesión iniciada con rol de administrador o encargado y el trabajador está activo. \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario accede a la ficha del trabajador y selecciona ``Dar de baja''.
+			\item El sistema solicita confirmación e indica las consecuencias de la baja.
+			\item El usuario confirma la baja.
+			\item El sistema marca al trabajador como inactivo y registra la fecha de baja.
+			\item El sistema muestra un mensaje de confirmación.
+		\end{enumerate}\\
+		\textbf{Postcondición}        & El trabajador queda inactivo, no puede ser asignado a nuevos trabajos y su historial se conserva. \\
+		\textbf{Excepciones}          &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El trabajador tiene trabajos pendientes o en curso: el sistema avisa y pide reasignarlos antes de completar la baja.
+			\item El usuario cancela la confirmación: no se realiza ningún cambio.
+		\end{enumerate}\\
+		\textbf{Importancia}          & Media \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-07 Dar de baja un trabajador.}
+\end{table}
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-08}    & \textbf{Consultar y buscar trabajadores}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Sergio \\
+		\textbf{Requisitos asociados} & RF-05 \\
+		\textbf{Descripción}          & El administrador o el encargado consulta el listado de trabajadores y lo filtra o busca para localizar a uno concreto y ver su ficha. \\
+		\textbf{Precondición}         & El usuario tiene una sesión iniciada con rol de administrador o encargado. \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario accede al apartado de trabajadores.
+			\item El sistema muestra el listado de trabajadores con sus datos principales y su estado.
+			\item El usuario introduce un texto de búsqueda o aplica filtros (por ejemplo, puesto o estado).
+			\item El sistema muestra los trabajadores que cumplen los criterios.
+			\item El usuario selecciona un trabajador y el sistema muestra su ficha completa.
+		\end{enumerate}\\
+		\textbf{Postcondición}        & El usuario ha visualizado la información solicitada; no se modifica ningún dato. \\
+		\textbf{Excepciones}          &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Ningún trabajador cumple los criterios: el sistema muestra un mensaje indicándolo y permite modificar la búsqueda.
+			\item No hay trabajadores registrados: el sistema muestra el listado vacío con la opción de dar de alta uno nuevo (CU-05).
+		\end{enumerate}\\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-08 Consultar y buscar trabajadores.}
+\end{table}
+
 \section{Objetivos generales}
 
 \section{Catalogo de requisitos}
