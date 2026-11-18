@@ -74,6 +74,115 @@
 	\caption{CU-02 Cerrar sesión.}
 \end{table}
 
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-03}    & \textbf{Recuperar contraseña}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Sergio \\
+		\textbf{Requisitos asociados} & RF-03 \\
+		\textbf{Descripción}          & El usuario que ha olvidado su contraseña solicita restablecerla mediante un enlace enviado a su correo electrónico. \\
+		\textbf{Precondición}         & El usuario tiene una cuenta activa y no tiene una sesión iniciada. \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario selecciona ``¿Has olvidado tu contraseña?'' en la página de inicio de sesión.
+			\item El sistema solicita el correo electrónico de la cuenta.
+			\item El usuario introduce su correo y confirma.
+			\item El sistema genera un enlace de restablecimiento con caducidad y lo envía al correo.
+			\item El usuario abre el enlace e introduce una nueva contraseña dos veces.
+			\item El sistema valida la nueva contraseña, la guarda y confirma el cambio.
+		\end{enumerate}\\
+		\textbf{Postcondición}        & La contraseña queda actualizada y el enlace utilizado deja de ser válido. \\
+		\textbf{Excepciones}          &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Correo no registrado: el sistema muestra el mismo mensaje de confirmación que en el caso correcto, para no revelar qué correos existen.
+			\item Enlace caducado o ya utilizado: el sistema informa y permite solicitar uno nuevo.
+			\item Las contraseñas no coinciden o no cumplen los requisitos de seguridad: el sistema lo indica y pide corregirlas.
+		\end{enumerate}\\
+		\textbf{Importancia}          & Media \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-03 Recuperar contraseña.}
+\end{table}
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-04}    & \textbf{Gestionar usuarios y roles}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Sergio \\
+		\textbf{Requisitos asociados} & RF-02, RF-04 \\
+		\textbf{Descripción}          & El administrador da de alta, modifica y da de baja cuentas de usuario, y les asigna un rol que determina sus permisos. \\
+		\textbf{Precondición}         & El administrador tiene una sesión iniciada. \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El administrador accede al apartado de gestión de usuarios.
+			\item El sistema muestra el listado de usuarios con su rol y estado.
+			\item El administrador elige una acción: crear usuario, modificar usuario o desactivar usuario.
+			\item El sistema muestra el formulario correspondiente (nombre, correo, rol).
+			\item El administrador introduce o modifica los datos y confirma.
+			\item El sistema valida los datos, guarda los cambios y muestra el listado actualizado.
+		\end{enumerate}\\
+		\textbf{Postcondición}        & Los cambios en las cuentas y roles quedan guardados y se aplican en el siguiente acceso del usuario afectado. \\
+		\textbf{Excepciones}          &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Correo ya registrado: el sistema lo indica y no crea la cuenta.
+			\item Datos obligatorios vacíos o inválidos: el sistema lo señala y pide corregirlos.
+			\item El administrador intenta desactivar su propia cuenta o quitarse el rol de administrador: el sistema lo impide.
+		\end{enumerate}\\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-04 Gestionar usuarios y roles.}
+\end{table}
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-05}    & \textbf{Dar de alta un trabajador}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Sergio \\
+		\textbf{Requisitos asociados} & RF-05 \\
+		\textbf{Descripción}          & El administrador o el encargado registra un nuevo trabajador en el sistema con sus datos personales y profesionales. \\
+		\textbf{Precondición}         & El usuario tiene una sesión iniciada con rol de administrador o encargado. \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario accede al apartado de trabajadores y selecciona ``Nuevo trabajador''.
+			\item El sistema muestra el formulario de alta.
+			\item El usuario introduce los datos (nombre, contacto, puesto, etc.) y confirma.
+			\item El sistema valida los datos y comprueba que el trabajador no esté ya registrado.
+			\item El sistema guarda el trabajador y muestra su ficha.
+		\end{enumerate}\\
+		\textbf{Postcondición}        & El trabajador queda registrado y disponible para ser asignado a trabajos. \\
+		\textbf{Excepciones}          &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Datos obligatorios vacíos o inválidos: el sistema lo señala y pide corregirlos.
+			\item Trabajador ya registrado (por ejemplo, mismo documento de identidad): el sistema lo indica y no crea un duplicado.
+		\end{enumerate}\\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-05 Dar de alta un trabajador.}
+\end{table}
+
 \section{Objetivos generales}
 
 \section{Catalogo de requisitos}
@@ -81,6 +190,9 @@
 	\begin{itemize}
 		\item \textbf{RF-01. Autenticación de usuarios.} El sistema permitirá a los usuarios registrados identificarse mediante correo electrónico y contraseña para acceder a la aplicación, rechazando el acceso si las credenciales son incorrectas o la cuenta está desactivada.
 		\item \textbf{RF-02. Gestión de roles y permisos.} El sistema asignará a cada usuario un rol (administrador, encargado o trabajador) y limitará las funciones a las que puede acceder según el rol asignado.
+		\item \textbf{RF-03. Recuperación de contraseña.} El sistema permitirá a los usuarios restablecer su contraseña mediante un enlace con caducidad enviado a su correo electrónico.
+		\item \textbf{RF-04. Gestión de usuarios.} El sistema permitirá al administrador crear, modificar y desactivar cuentas de usuario.
+		\item \textbf{RF-05. Gestión de trabajadores.} El sistema permitirá registrar, modificar, dar de baja y consultar trabajadores.
 	\end{itemize}
 
 \section{Especificación de requisitos}
